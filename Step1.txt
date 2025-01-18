@@ -1,0 +1,47 @@
+Step 1: Understand the Funnel Metrics
+The funnel tracks two events:
+"View Item Details": Users who viewed item details.
+"Add to Cart": Users who added an item to their cart.
+Conversion: The percentage of users who transitioned from "View Item Details" to "Add to Cart" within 1 day.
+We need to calculate the conversion rate per city and identify the city with the highest conversion rate.
+Step 2: Analyze the Timeframe and Events
+Timeframe: June 2022.
+Filter the dataset for:
+Event names: "View Item Details" and "Add to Cart".
+Users completing the transition within 1 day.
+Step 3: Steps for Calculation
+Filter the Dataset:
+Select rows where event_name is either "View Item Details" or "Add to Cart".
+Restrict the data to June 2022.
+Group by City:
+Group the data by city to calculate metrics for each city.
+Match Events:
+For each "View Item Details" event, check if the same user performed "Add to Cart" within 1 day.
+Calculate Conversion Rate:
+For each city:
+Conversion Rate=(Users who completed the funnel Users who started the funnel)×100
+Conversion Rate=( Users who started the funnel Users who completed the funnel )×100
+Find the City with the Highest Conversion:
+Identify the city with the maximum conversion rate.
+Step 4: Using Amplitude for Funnel Analysis
+Based on the provided chart:
+
+Use the Funnel Analysis tool in Amplitude:
+Define the funnel events: "View Item Details" → "Add to Cart".
+Set the conversion window to 1 day.
+Group by city.
+Amplitude Output:
+The chart will display conversion rates per city.
+Identify the city with the highest conversion.
+Step 5: Example Calculation
+Assume the following data from Amplitude for June 2022:
+
+City	View Item Details	Add to Cart	Conversion Rate (%)
+Sydney	1,000	500	50%
+Melbourne	800	400	50%
+Brisbane	600	450	75%
+Result:
+
+Brisbane has the highest conversion rate of 75%.
+Step 6: Amplitude Chart
+After performing the steps in Amplitude, attach the funnel chart URL to your form for validation.

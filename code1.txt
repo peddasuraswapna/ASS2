@@ -1,0 +1,9 @@
+import pandas as pd
+# Sample structure of df: ['user_id', 'city', 'event_type', 'event_timestamp']
+df['event_timestamp'] = pd.to_datetime(df['event_timestamp'])
+df_june = df[(df['event_timestamp'].dt.month == 6) & (df['event_timestamp'].dt.year == 2022)]
+view_item = df_june[df_june['event_type'] == 'View Item Details']
+add_to_cart = df_june[df_june['event_type'] == 'Add to Cart']
+merged_data = pd.merge(view_item, add_to_cart, on=['user_id', 'city'], suffixes=('_view', '_cart'))
+merged_data['time_diff'] = (merged_data['event_timestamp_cart'] - merged_data['event_timestamp_view']).dt.total_seconds()
+conversions_within_1_day = merged_data[merged_data['time_diff'] <= 86400]
